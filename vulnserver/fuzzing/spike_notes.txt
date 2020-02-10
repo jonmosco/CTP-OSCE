@@ -1,0 +1,23 @@
+Spike Fuzzer
+============
+
+Spike is a program which sends crafted packages to an application in order
+to make it crash. The packages can be defined as templates. Spike is capable
+of sending both TCP and UDP packages. Vulnerabilities can be found in
+applications with the help of Spike. Spike is part of the Kali distribution.
+
+generic_send_tcp <ip> <port> <script> 0 0
+
+Fuzzing Variable 0:201             
+Variablesize= 5000                 
+Fuzzing Variable 0:202             
+Couldn't tcp connect to target     
+Variablesize= 4097                 
+tried to send to a closed socket!
+Fuzzing Variable 0:203 
+Couldn't tcp connect to target
+
+Links
+=====
+
+http://sh3llc0d3r.com/vulnserver-fuzzing-with-spike/
