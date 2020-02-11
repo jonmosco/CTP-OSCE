@@ -1,0 +1,34 @@
+018AFF9C   66:81CA FF0F     OR DX,0FFF
+018AFFA1   42               INC EDX
+018AFFA2   52               PUSH EDX
+018AFFA3   6A 02            PUSH 2
+018AFFA5   58               POP EAX
+018AFFA6   CD 2E            INT 2E
+018AFFA8   3C 05            CMP AL,5
+018AFFAA   5A               POP EDX
+018AFFAB  ^74 EF            JE SHORT 018AFF9C
+018AFFAD   B8 77303074      MOV EAX,74303077
+018AFFB2   89D7             MOV EDI,EDX
+018AFFB4   AF               SCAS DWORD PTR ES:[EDI]
+018AFFB5  ^75 EA            JNZ SHORT 018AFFA1
+018AFFB7   AF               SCAS DWORD PTR ES:[EDI]
+018AFFB8  ^75 E7            JNZ SHORT 018AFFA1
+018AFFBA   FFE7             JMP EDI
+018AFFBC   41               INC ECX
+018AFFBD   41               INC ECX
+018AFFBE   41               INC ECX
+018AFFBF   41               INC ECX
+018AFFC0   41               INC ECX
+018AFFC1   41               INC ECX
+018AFFC2   41               INC ECX
+018AFFC3   41               INC ECX
+018AFFC4   41               INC ECX
+018AFFC5   41               INC ECX
+018AFFC6   41               INC ECX
+018AFFC7   41               INC ECX
+018AFFC8   41               INC ECX
+018AFFC9   41               INC ECX
+018AFFCA   41               INC ECX
+018AFFCB   41               INC ECX
+018AFFCC  ^EB CE            JMP SHORT 018AFF9C
+
